@@ -41,7 +41,7 @@ jobs:
         run: msbuild $env:SolutionPath /p:Configuration=Release
         
       - name: Zip Files
-        uses: papeloto/action-zip@v1
+        uses: vimtor/action-zip@v1
         with:
           files: dist/ {{ env.ArtifactPath }}
           dest: result.zip
