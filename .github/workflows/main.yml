@@ -44,13 +44,13 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: dist/ ${{ env.ArtifactPath }}
-          dest: result.zip
+          dest: AutoUpdaterTest.zip
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: published_app
-          path: result.zip
+          path: AutoUpdaterTest.zip
   
   upload:
     needs: build
