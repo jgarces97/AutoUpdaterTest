@@ -36,21 +36,21 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore ${{ env.SolutionPath }}
 
-      - name: Calculate next version
-        uses: cezarypiatek/NextVersionGeneratorAction@0.4
-        with:
-          minor-pattern: '\bAdd\b'
-          patch-pattern: ".*"
-          output-to-env-variable: "Version"
 
       - name: Build and Publish
         run: msbuild $env:SolutionPath /p:Configuration=Release
+        
+      - name: Zip Files
+        uses: papeloto/action-zip@v1
+        with:
+          files: dist/ {{ env.ArtifactPath }}
+          dest: result.zip
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
           name: published_app
-          path: "${{ env.ArtifactPath }}\\app.publish"
+          path: result.zip
   
   upload:
     needs: build
