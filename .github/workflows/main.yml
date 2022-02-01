@@ -43,7 +43,7 @@ jobs:
       - name: Zip Files
         uses: vimtor/action-zip@v1
         with:
-          files: dist/ {{ env.ArtifactPath }}
+          files: dist/ ${{ env.ArtifactPath }}
           dest: result.zip
         
       - name: Upload Artifact
