@@ -81,7 +81,6 @@ jobs:
         uses: bacongobbler/azure-blob-storage-upload@v1.2.0
         with:
           source_dir: published_app_path
-          container_name: $web
+          container_name: autoupdater
           connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          extra_args: '--destination-path ClickOnceTest1/'
           sync: false
